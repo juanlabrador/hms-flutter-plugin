@@ -18,9 +18,9 @@ import 'dart:convert';
 import 'dart:ui';
 
 class ActivityConversionData {
-  int activityType;
-  int conversionType;
-  int elapsedTimeFromReboot;
+  int? activityType;
+  int? conversionType;
+  int? elapsedTimeFromReboot;
 
   ActivityConversionData({
     this.activityType,
@@ -36,7 +36,7 @@ class ActivityConversionData {
     };
   }
 
-  factory ActivityConversionData.fromMap(Map<dynamic, dynamic> map) {
+  factory ActivityConversionData.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return ActivityConversionData(

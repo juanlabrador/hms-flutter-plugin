@@ -23,8 +23,8 @@ import 'location_request.dart';
 
 class LocationSettingsRequest {
   List<LocationRequest> requests;
-  bool alwaysShow;
-  bool needBle;
+  bool? alwaysShow;
+  bool? needBle;
 
   LocationSettingsRequest({
     this.requests = const <LocationRequest>[],
@@ -40,7 +40,7 @@ class LocationSettingsRequest {
     };
   }
 
-  factory LocationSettingsRequest.fromMap(Map<dynamic, dynamic> map) {
+  factory LocationSettingsRequest.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return LocationSettingsRequest(

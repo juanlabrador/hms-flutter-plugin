@@ -24,14 +24,14 @@ class Geofence {
   static const int DWELL_GEOFENCE_CONVERSION = 4;
   static const int GEOFENCE_NEVER_EXPIRE = -1;
 
-  String uniqueId;
-  int conversions;
-  int validDuration;
-  double latitude;
-  double longitude;
-  double radius;
-  int notificationInterval;
-  int dwellDelayTime;
+  String? uniqueId;
+  int? conversions;
+  int? validDuration;
+  double? latitude;
+  double? longitude;
+  double? radius;
+  int? notificationInterval;
+  int? dwellDelayTime;
 
   Geofence({
     this.uniqueId,
@@ -57,7 +57,7 @@ class Geofence {
     };
   }
 
-  factory Geofence.fromMap(Map<dynamic, dynamic> map) {
+  factory Geofence.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return Geofence(

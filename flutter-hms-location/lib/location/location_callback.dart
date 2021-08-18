@@ -21,8 +21,8 @@ typedef void OnLocationResult(LocationResult locationResult);
 typedef void OnLocationAvailability(LocationAvailability locationAvailability);
 
 class LocationCallback {
-  OnLocationResult onLocationResult;
-  OnLocationAvailability onLocationAvailability;
+  OnLocationResult? onLocationResult;
+  OnLocationAvailability? onLocationAvailability;
 
   LocationCallback({
     this.onLocationResult,

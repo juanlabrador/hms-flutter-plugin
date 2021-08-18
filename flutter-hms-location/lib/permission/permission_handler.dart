@@ -17,7 +17,7 @@
 import 'package:flutter/services.dart';
 
 class PermissionHandler {
-  static PermissionHandler _instance;
+  static PermissionHandler? _instance;
 
   final MethodChannel _methodChannel;
 
@@ -31,32 +31,32 @@ class PermissionHandler {
           'com.huawei.flutter.location/permission_methodchannel');
       _instance = PermissionHandler._create(methodChannel);
     }
-    return _instance;
+    return _instance!;
   }
 
-  Future<bool> hasLocationPermission() async {
+  Future<bool?> hasLocationPermission() async {
     return _methodChannel.invokeMethod<bool>('hasLocationPermission');
   }
 
-  Future<bool> hasBackgroundLocationPermission() async {
+  Future<bool?> hasBackgroundLocationPermission() async {
     return _methodChannel.invokeMethod<bool>('hasBackgroundLocationPermission');
   }
 
-  Future<bool> hasActivityRecognitionPermission() async {
+  Future<bool?> hasActivityRecognitionPermission() async {
     return _methodChannel
         .invokeMethod<bool>('hasActivityRecognitionPermission');
   }
 
-  Future<bool> requestLocationPermission() async {
+  Future<bool?> requestLocationPermission() async {
     return _methodChannel.invokeMethod<bool>('requestLocationPermission');
   }
 
-  Future<bool> requestBackgroundLocationPermission() async {
+  Future<bool?> requestBackgroundLocationPermission() async {
     return _methodChannel
         .invokeMethod<bool>('requestBackgroundLocationPermission');
   }
 
-  Future<bool> requestActivityRecognitionPermission() async {
+  Future<bool?> requestActivityRecognitionPermission() async {
     return _methodChannel
         .invokeMethod<bool>('requestActivityRecognitionPermission');
   }

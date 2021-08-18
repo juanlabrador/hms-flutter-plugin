@@ -17,8 +17,8 @@
 import 'dart:convert';
 
 class NavigationResult {
-  int possibility;
-  int state;
+  int? possibility;
+  int? state;
 
   NavigationResult({
     this.possibility,
@@ -32,7 +32,7 @@ class NavigationResult {
     };
   }
 
-  factory NavigationResult.fromMap(Map<dynamic, dynamic> map) {
+  factory NavigationResult.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return NavigationResult(

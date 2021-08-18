@@ -22,10 +22,10 @@ import 'package:flutter/foundation.dart';
 import '../location/location.dart';
 
 class GeofenceData {
-  int errorCode;
-  int conversion;
-  List<String> convertingGeofenceIdList;
-  Location convertingLocation;
+  int? errorCode;
+  int? conversion;
+  List<String>? convertingGeofenceIdList;
+  Location? convertingLocation;
 
   GeofenceData({
     this.errorCode,
@@ -43,7 +43,7 @@ class GeofenceData {
     };
   }
 
-  factory GeofenceData.fromMap(Map<dynamic, dynamic> map) {
+  factory GeofenceData.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return GeofenceData(

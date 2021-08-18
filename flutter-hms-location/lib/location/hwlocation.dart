@@ -20,29 +20,29 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 
 class HWLocation {
-  String provider;
-  double latitude;
-  double longitude;
-  double altitude;
-  double speed;
-  double bearing;
-  double horizontalAccuracyMeters;
-  double verticalAccuracyMeters;
-  double speedAccuracyMetersPerSecond;
-  double bearingAccuracyDegrees;
-  int time;
-  int elapsedRealtimeNanos;
-  String countryCode;
-  String countryName;
-  String state;
-  String city;
-  String county;
-  String street;
-  String featureName;
-  String postalCode;
-  String phone;
-  String url;
-  Map<String, dynamic> extraInfo;
+  String? provider;
+  double? latitude;
+  double? longitude;
+  double? altitude;
+  double? speed;
+  double? bearing;
+  double? horizontalAccuracyMeters;
+  double? verticalAccuracyMeters;
+  double? speedAccuracyMetersPerSecond;
+  double? bearingAccuracyDegrees;
+  int? time;
+  int? elapsedRealtimeNanos;
+  String? countryCode;
+  String? countryName;
+  String? state;
+  String? city;
+  String? county;
+  String? street;
+  String? featureName;
+  String? postalCode;
+  String? phone;
+  String? url;
+  Map<String, dynamic>? extraInfo;
 
   HWLocation({
     this.provider,
@@ -98,7 +98,7 @@ class HWLocation {
     };
   }
 
-  factory HWLocation.fromMap(Map<dynamic, dynamic> map) {
+  factory HWLocation.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return HWLocation(

@@ -27,18 +27,18 @@ class LocationRequest {
   static const int PRIORITY_HD_ACCURACY = 200;
   static const double _FASTEST_INTERVAL_FACTOR = 6.0;
 
-  int _priority;
-  int _interval;
-  int _fastestInterval;
-  bool _isFastestIntervalExplicitlySet;
-  int _expirationTime;
-  int _numUpdates;
-  double _smallestDisplacement;
-  int _maxWaitTime;
-  bool needAddress;
-  String language;
-  String countryCode;
-  Map<String, String> extras;
+  int? _priority;
+  int? _interval;
+  int? _fastestInterval;
+  bool? _isFastestIntervalExplicitlySet;
+  int? _expirationTime;
+  int? _numUpdates;
+  double? _smallestDisplacement;
+  int? _maxWaitTime;
+  bool? needAddress;
+  String? language;
+  String? countryCode;
+  Map<String, String>? extras;
 
   LocationRequest._create(
     this._priority,
@@ -58,7 +58,7 @@ class LocationRequest {
   LocationRequest() {
     _priority = PRIORITY_BALANCED_POWER_ACCURACY;
     _interval = 3600000;
-    _fastestInterval = (_interval ~/ _FASTEST_INTERVAL_FACTOR);
+    _fastestInterval = (_interval! ~/ _FASTEST_INTERVAL_FACTOR);
     _isFastestIntervalExplicitlySet = false;
     _expirationTime = 9223372036854775807;
     _numUpdates = 2147483647;
@@ -69,9 +69,9 @@ class LocationRequest {
     countryCode = '';
   }
 
-  int get priority => _priority;
+  int? get priority => _priority;
 
-  set priority(int value) {
+  set priority(int? value) {
     if (value == PRIORITY_HIGH_ACCURACY ||
         value == PRIORITY_BALANCED_POWER_ACCURACY ||
         value == PRIORITY_LOW_POWER ||
@@ -83,20 +83,20 @@ class LocationRequest {
     }
   }
 
-  int get interval => _interval;
+  int get interval => _interval!;
 
   set interval(int value) {
     if (value.isNegative) {
       throw ArgumentError('Interval is invalid');
     } else {
       _interval = value;
-      _fastestInterval = _isFastestIntervalExplicitlySet
+      _fastestInterval = _isFastestIntervalExplicitlySet!
           ? _fastestInterval
-          : (_interval ~/ _FASTEST_INTERVAL_FACTOR);
+          : (_interval! ~/ _FASTEST_INTERVAL_FACTOR);
     }
   }
 
-  int get fastestInterval => _fastestInterval;
+  int get fastestInterval => _fastestInterval!;
 
   set fastestInterval(int value) {
     if (value.isNegative) {
@@ -107,15 +107,15 @@ class LocationRequest {
     }
   }
 
-  bool get isFastestIntervalExplicitlySet => _isFastestIntervalExplicitlySet;
+  bool? get isFastestIntervalExplicitlySet => _isFastestIntervalExplicitlySet;
 
-  int get expirationTime => _expirationTime;
+  int get expirationTime => _expirationTime!;
 
   set expirationTime(int value) {
     _expirationTime = value.isNegative ? 0 : value;
   }
 
-  int get numUpdates => _numUpdates;
+  int get numUpdates => _numUpdates!;
 
   set numUpdates(int value) {
     if (value <= 0) {
@@ -125,7 +125,7 @@ class LocationRequest {
     }
   }
 
-  double get smallestDisplacement => _smallestDisplacement;
+  double get smallestDisplacement => _smallestDisplacement!;
 
   set smallestDisplacement(double value) {
     if (value.isNegative) {
@@ -135,15 +135,15 @@ class LocationRequest {
     }
   }
 
-  int get maxWaitTime => _maxWaitTime < _interval ? _interval : _maxWaitTime;
+  int? get maxWaitTime => _maxWaitTime! < _interval! ? _interval : _maxWaitTime;
 
-  set maxWaitTime(int value) => _maxWaitTime = value;
+  set maxWaitTime(int? value) => _maxWaitTime = value;
 
   void putExtras(String key, String value) {
     if (extras == null) {
       extras = Map<String, String>();
     }
-    extras.putIfAbsent(key, () => value);
+    extras!.putIfAbsent(key, () => value);
   }
 
   Map<String, dynamic> toMap() {
@@ -163,7 +163,7 @@ class LocationRequest {
     };
   }
 
-  factory LocationRequest.fromMap(Map<dynamic, dynamic> map) {
+  factory LocationRequest.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return LocationRequest._create(

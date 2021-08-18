@@ -21,14 +21,14 @@ import 'activity_conversion_response.dart';
 import 'activity_identification_response.dart';
 
 class ActivityIdentificationService {
-  static ActivityIdentificationService _instance;
+  static ActivityIdentificationService? _instance;
 
   final MethodChannel _methodChannel;
   final EventChannel _activityIdentificationEventChannel;
   final EventChannel _activityConversionEventChannel;
 
-  Stream<ActivityIdentificationResponse> _onActivityIdentification;
-  Stream<ActivityConversionResponse> _onActivityConversion;
+  Stream<ActivityIdentificationResponse>? _onActivityIdentification;
+  Stream<ActivityConversionResponse>? _onActivityConversion;
 
   ActivityIdentificationService._create(
     this._methodChannel,
@@ -53,16 +53,16 @@ class ActivityIdentificationService {
         activityConversionEventChannel,
       );
     }
-    return _instance;
+    return _instance!;
   }
 
-  Future<int> createActivityIdentificationUpdates(
+  Future<int?> createActivityIdentificationUpdates(
       int detectionIntervalMillis) async {
     return _methodChannel.invokeMethod<int>(
         'createActivityIdentificationUpdates', detectionIntervalMillis);
   }
 
-  Future<int> createActivityConversionUpdates(
+  Future<int?> createActivityConversionUpdates(
       List<ActivityConversionInfo> activityConversions) async {
     return _methodChannel.invokeMethod<int>('createActivityConversionUpdates',
         activityConversions?.map((x) => x?.toMap())?.toList());
@@ -78,7 +78,7 @@ class ActivityIdentificationService {
         'deleteActivityConversionUpdates', requestCode);
   }
 
-  Stream<ActivityIdentificationResponse> get onActivityIdentification {
+  Stream<ActivityIdentificationResponse>? get onActivityIdentification {
     if (_onActivityIdentification == null) {
       _onActivityIdentification = _activityIdentificationEventChannel
           .receiveBroadcastStream()
@@ -87,7 +87,7 @@ class ActivityIdentificationService {
     return _onActivityIdentification;
   }
 
-  Stream<ActivityConversionResponse> get onActivityConversion {
+  Stream<ActivityConversionResponse>? get onActivityConversion {
     if (_onActivityConversion == null) {
       _onActivityConversion = _activityConversionEventChannel
           .receiveBroadcastStream()

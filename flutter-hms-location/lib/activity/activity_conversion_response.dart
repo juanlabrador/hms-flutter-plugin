@@ -22,7 +22,7 @@ import 'package:flutter/foundation.dart';
 import 'activity_conversion_data.dart';
 
 class ActivityConversionResponse {
-  List<ActivityConversionData> activityConversionDatas;
+  List<ActivityConversionData>? activityConversionDatas;
 
   ActivityConversionResponse({
     this.activityConversionDatas,
@@ -35,7 +35,7 @@ class ActivityConversionResponse {
     };
   }
 
-  factory ActivityConversionResponse.fromMap(Map<dynamic, dynamic> map) {
+  factory ActivityConversionResponse.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return ActivityConversionResponse(

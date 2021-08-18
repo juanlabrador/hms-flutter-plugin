@@ -21,7 +21,7 @@ class NavigationRequest {
   static const int OVERPASS = 1;
   static const int IS_SUPPORT_EX = 2;
 
-  int type;
+  int? type;
 
   NavigationRequest({this.type});
 
@@ -31,7 +31,7 @@ class NavigationRequest {
     };
   }
 
-  factory NavigationRequest.fromMap(Map<dynamic, dynamic> map) {
+  factory NavigationRequest.fromMap(Map<dynamic, dynamic>? map) {
     if (map == null) return null;
 
     return NavigationRequest(
