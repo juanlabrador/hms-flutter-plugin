@@ -8,9 +8,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Below permissions are to support vibration and send scheduled local notifications -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".Application"
         android:icon="@mipmap/ic_launcher"
@@ -44,29 +45,35 @@
             <!-- The Intent filter below is for receiving custom intents-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="app"/>
+
+                <data android:scheme="app" />
             </intent-filter>
         </activity>
-     
+
         <!-- Set push kit auto enable to true (for obtaining the token on initialize)-->
         <meta-data
             android:name="push_kit_auto_init_enabled"
             android:value="true" />
         <!-- These receivers are for sending scheduled local notifications -->
-        <receiver android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationBootEventReceiver">
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationBootEventReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationScheduledPublisher"
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationScheduledPublisher"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.BackgroundMessageBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
-        </receiver>
-
-        <receiver android:name="com.huawei.hms.flutter.push.receiver.BackgroundMessageBroadcastReceiver"
-            android:enabled="true" android:exported="true">
             <intent-filter>
                 <action android:name="com.huawei.hms.flutter.push.receiver.BACKGROUND_REMOTE_MESSAGE" />
             </intent-filter>

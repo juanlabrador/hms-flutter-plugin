@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.huawei.hms.flutter.push">
+    package="com.huawei.hms.flutter.push">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application>
@@ -11,7 +11,9 @@
             </intent-filter>
         </service>
         <!-- This receiver is for local notification click actions -->
-        <receiver android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationActionsReceiver" />
+        <receiver
+            android:name="com.huawei.hms.flutter.push.receiver.local.HmsLocalNotificationActionsReceiver"
+            android:exported="true" />
     </application>
 
 </manifest>
